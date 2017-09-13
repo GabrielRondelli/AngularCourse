@@ -1,3 +1,4 @@
+import { Member } from './../member';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent implements OnInit {
-  @Input() member;
+  @Input() member: Member;
 
   constructor() { }
 

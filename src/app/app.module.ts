@@ -1,3 +1,4 @@
+import { MembersService } from './members/members.service';
 import { MembersModule } from './members/members.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +15,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     MembersModule
   ],
-  providers: [],
+  providers: [MembersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

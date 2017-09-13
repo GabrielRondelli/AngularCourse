@@ -1,0 +1,21 @@
+<form action="" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <div>
+      <label for="name">Name</label>
+      <input type="text" ngModel  name="name" id="name">
+  </div>
+  <div ngModelGroup="website">
+      <label>Website</label>
+      <input type="text" ngModel name="name" id="name">
+      <input type="text" ngModel name="url" id="url">
+  </div>
+  <div>
+      <label for="email">Email</label>
+      <input type="text" ngModel name="email" id="email">
+  </div>
+  <div>
+      <label for="status">Status</label>
+      <input type="text" ngModel name="status" id="status">
+  </div>
+  <button type="submit">Save</button>
+  <button>Cancel</button>
+</form>
