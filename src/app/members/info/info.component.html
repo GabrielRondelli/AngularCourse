@@ -1,8 +1,0 @@
-<div class="clear row" *ngIf="member">
-  <div class="member">
-    <span>Name:</span><span>{{ member.name }}</span><br>
-    <span>Website:</span><span><a href="{{ member.website.url }}"> {{ member.website.name }} </a></span><br>
-    <span>Email:</span><span> {{ member.email }}</span><br>
-    <span>Status:</span><span class="{{ member.status | lowercase }}"> {{ member.status }}</span>
-  </div>
-</div>

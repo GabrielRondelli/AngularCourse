@@ -1,20 +1,49 @@
+import { MembersService } from './../members.service';
 import { Member } from './../member';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-create-member',
+  selector: 'create-member',
   templateUrl: './create-member.component.html',
   styleUrls: ['./create-member.component.css']
 })
 export class CreateMemberComponent implements OnInit {
-  @Output() onSubmitted: EventEmitter<Member> = new EventEmitter();
-  constructor() { }
+  @Input() members: Member[];
+  member: Member = new Member();
+  private isRequesting;
+
+  constructor(
+    private membersService: MembersService
+  ) { }
 
   ngOnInit() {
   }
 
-  onSubmit(newMember) {
-    this.onSubmitted.emit(newMember);
+  onSubmit() {
+    this.addBlackout();
+  }
+
+  addBlackout() {
+      this.member.id = null;
+
+      this.isRequesting = true;
+      this.membersService
+          .setMembers(this.member)
+          .subscribe(
+              member => {
+                  this.addDataSource(member, this.members);
+              },
+              error => this.handleError(error)
+          );
+  }
+
+  addDataSource(member: any, members: Member[]) {
+      this.membersService.addDataSource(member, members);
+  }
+
+  handleError(error: any): void {
+    this.isRequesting = false;
+    console.log(error);
   }
 
 }

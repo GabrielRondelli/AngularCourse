@@ -5,4 +5,29 @@
   </h1>
 </div>
 
-<app-members></app-members>
+<div id="localContainer" class="col-md-10 col-md-offset-1 container">
+    <nav id="localNavigation" class="navbar navbar-default nav-local" role="navigation" id="navigation">
+        <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">toggle navigation</span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+  
+                <div class="collapse navbar-collapse local" id="bs-example-navbar-collapse-2">
+                    <ul class="nav navbar-nav local-nav">
+                        <li>
+                            <a [routerLink]="['./list']" routerLinkActive="router-link-active">Members</a>
+                            <div class='arrow' aria-hidden='true'></div>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>       
+</div><!-- /.container -->
+
+
+<main role="main" class="col-md-10 col-md-offset-1 main">
+    <router-outlet></router-outlet>
+</main>

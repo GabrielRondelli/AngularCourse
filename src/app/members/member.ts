@@ -1,6 +1,6 @@
 export class Member {
-    name: string;
-    website: any;
-    email: string;
-    status: string;
+    id: number;
+    first_name: string;
+    last_name: string;
+    avatar: string;
 }

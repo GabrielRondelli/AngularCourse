@@ -1,0 +1,8 @@
+<div class="clear row" *ngIf="members">
+  <div class="member" *ngFor="let member of members">
+    <span>First Name:</span><span>{{ member.first_name }}</span><br>
+    <span>Last Name:</span><span> {{ member.last_name }} </span><br>
+    <span>Avatar:</span><span> <img src="{{ member.avatar }}" alt=""></span><br>
+    <a [routerLink]="['/edit', member.id]">Edit</a>
+  </div>
+</div>

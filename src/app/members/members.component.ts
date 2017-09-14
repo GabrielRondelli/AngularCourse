@@ -15,20 +15,20 @@ export class MembersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getMembers();
+    // this.getMembers();
   }
 
   onSubmit(newMember) {
     this.members.push(newMember);
   }
 
-  getMembers(): void {
-    this.members = this.membersService.getMembers();
-  }
+  // getMembers(): void {
+  //   this.members = this.membersService.getMembers();
+  // }
 
-  setMembers(newMember): void {
-    this.membersService.setMembers(newMember);
-    this.getMembers();
-  }
+  // setMembers(newMember): void {
+  //   this.membersService.setMembers(newMember);
+  //   this.getMembers();
+  // }
 
 }
