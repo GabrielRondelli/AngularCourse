@@ -1,8 +1,35 @@
 <div class="clear row" *ngIf="members">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <span>Avatar:</span>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <span>First Name:</span>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <span>Last Name:</span>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      Actions
+    </div>
+  </div>
+
   <div class="member" *ngFor="let member of members">
-    <span>First Name:</span><span>{{ member.first_name }}</span><br>
-    <span>Last Name:</span><span> {{ member.last_name }} </span><br>
-    <span>Avatar:</span><span> <img src="{{ member.avatar }}" alt=""></span><br>
-    <a [routerLink]="['/edit', member.id]">Edit</a>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <span> <img src="{{ member.avatar }}" alt=""></span>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <span>{{ member.first_name }}</span>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <span> {{ member.last_name }} </span>
+      </div>
+
+      <div class="col-xs-12 col-sm-3">
+        <a [routerLink]="['/edit', member.id]" class="btn btn-default">Edit</a>
+        <delete-member [member]="member" (click)="onDeleted($event)"></delete-member>        
+      </div>
+    </div>
   </div>
 </div>

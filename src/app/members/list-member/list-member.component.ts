@@ -28,6 +28,10 @@ export class ListMemberComponent implements OnInit {
       );
   }
 
+  onDeleted(memberId) {
+    this.membersService.deleteMember(memberId);
+  }
+
   handleResponse(members: any): void {
       this.members = members.data;
       this.isRequesting = false;

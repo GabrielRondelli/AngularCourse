@@ -1,6 +1,8 @@
 import { MembersService } from './../members.service';
 import { Member } from './../member';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'delete-member',
@@ -10,36 +12,36 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DeleteMemberComponent implements OnInit {
   @Input() member: Member;
   @Input() members: Member[];
+  @Output() onDelete: EventEmitter<any> = new EventEmitter();
   private isRequesting;
 
 
   constructor(
-    private membersService: MembersService
+    private membersService: MembersService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
   }
 
-  deleteBlackout() {
-    this.isRequesting = true;
-
-    this.membersService
-        .deleteMember(this.member.id)
-        .subscribe(
-            member => {
-                this.deleteDataSource(this.member.id, this.members);
-            },
-            error => this.handleError(error)
-        );
+  deleteMember(memberId: number): void {
+    this.membersService.deleteMember(memberId)
+      .subscribe(
+          error => this.handleError(error)
+      );
   }
 
-  deleteDataSource(memberId: number, members: Member[]) {
+  deleteDataSource(memberId: number, members: Member[]): void {
       this.membersService.deleteDataSource(memberId, members);
   }
 
   handleError(error: any): void {
     this.isRequesting = false;
     console.log(error);
+  }
+
+  onDeleted() {
+    this.onDelete.emit();
   }
 
 }

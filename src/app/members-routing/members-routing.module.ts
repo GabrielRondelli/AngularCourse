@@ -13,7 +13,8 @@ import { ShowMemberComponent } from '../members/show-member/show-member.componen
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'list',  component: ListMemberComponent },
-  { path: 'edit/:id', component: EditMemberComponent}
+  { path: 'edit/:id', component: EditMemberComponent},
+  { path: 'delete/:id', component: DeleteMemberComponent}
 ];
 
 @NgModule({
